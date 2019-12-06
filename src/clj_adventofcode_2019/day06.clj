@@ -1,4 +1,4 @@
-(ns clj-adventofcode-2019.day6
+(ns clj-adventofcode-2019.day06
   (:require
     [clojure.java.io :as io]))
 
