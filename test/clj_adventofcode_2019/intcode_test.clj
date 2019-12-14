@@ -1,6 +1,7 @@
 (ns clj-adventofcode-2019.intcode-test
   (:require [clojure.test :refer :all]
-            [clj-adventofcode-2019.intcode :refer :all]))
+            [clj-adventofcode-2019.intcode :refer :all]
+            [clojure.math.numeric-tower :as math]))
 
 
 (deftest day-02
@@ -96,3 +97,19 @@
       (is (= (:output (initialize-and-run program [9]))
              [1001]))
       )))
+
+(deftest day-09-relative-mode-plus-extra-mem
+  (testing "takes no input and produces a copy of itself as output"
+    (let [program [109 1 204 -1 1001 100 1 100 1008 100 16 101 1006 101 0 99]
+          result (initialize-and-run program)]
+      (is (= (:output result) program))))
+
+  (testing "should output a 16-digit number"
+    (let [program [1102, 34915192, 34915192, 7, 4, 7, 99, 0]]
+      (is (> (first (:output (initialize-and-run program))) (math/expt 10 15)))
+      )
+    )
+
+  (testing "should output the large number in the middle"
+    (is (= [1125899906842624] (:output (initialize-and-run [104, 1125899906842624, 99])))))
+  )
