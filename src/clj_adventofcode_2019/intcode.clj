@@ -1,7 +1,8 @@
 (ns clj-adventofcode-2019.intcode
   (:require
-    [clojure.math.numeric-tower :as math]
-    [clojure.java.io :as io]))
+   [clojure.string]
+   [clojure.math.numeric-tower :as math]
+   [clojure.java.io :as io]))
 
 
 (def operations {1  :add
@@ -158,7 +159,7 @@
 
 
 (defn load-program-from-resource [resource-name]
-  (apply vector (map #(Integer/parseInt (clojure.string/trim-newline %))
+  (apply vector (map #(read-string (clojure.string/trim-newline %))
                      (clojure.string/split
                        (slurp (io/resource resource-name)) #","))))
 
