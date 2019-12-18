@@ -8,6 +8,6 @@
                  [org.clojure/math.combinatorics "0.1.6"]
                  [org.clojure/core.async "0.6.532"]
                  ]
-  :main ^:skip-aot clj-adventofcode-2019.core
+  :main ^:skip-aot clj-adventofcode-2019.day13
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
